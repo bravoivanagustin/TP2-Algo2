@@ -1,54 +1,56 @@
 package aed;
 
-public class Trie {
+import java.util.ArrayList;
 
-    private class NodoTrie {
+public class Trie<T> {
+
+    private class NodoTrie<R> {
         
-        private char valor;
-        private NodoTrie[] hijos;
-        private boolean fin;
+        private ArrayList<NodoTrie<R>> hijos;
+        private R fin;
 
-        public NodoTrie(char c) {
-            this.valor = c;
-            this.hijos = new NodoTrie[256];
-            this.fin = false;
+        public NodoTrie() {
+            this.hijos = new ArrayList<NodoTrie<R>>();
+            this.fin = null;
         }
     }
 
-    private NodoTrie raiz;
+    private NodoTrie<T> raiz;
 
     public Trie(){
-        raiz = new NodoTrie('\0');
+        raiz = new NodoTrie<>();
     }
 
-    public void insertar(String palabra){
-        NodoTrie actual = this.raiz;
+    public void insertar(String palabra, T fin){
+        NodoTrie<T> actual = this.raiz;
         for (int i = 0; i < palabra.length(); i++) {
             char c = palabra.charAt(i);
-            if (actual.hijos[c - 'a'] == null) {actual.hijos[c - 'a'] = new NodoTrie(c);}
-            actual = actual.hijos[c - 'a'];
+            if (actual.hijos.get(c - 'a') == null) {
+                NodoTrie<T> nuevo = new NodoTrie<>();
+                actual.hijos.set(c - 'a', nuevo);
+            }
+            actual = actual.hijos.get(c - 'a');
         }
-        actual.fin = true;
+        actual.fin = fin;
     }
 
-    public boolean buscar(String palabra) {
-        NodoTrie nodo = obtener(palabra);
-        return nodo != null && nodo.fin;
+    public boolean buscar(String palabra) { 
+        NodoTrie<T> nodo = obtener(palabra);
+        return nodo != null && nodo.fin != null;
     }
 
     public boolean esPrefijo(String palabra) {
-        NodoTrie nodo = obtener(palabra);
+        NodoTrie<T> nodo = obtener(palabra);
         return nodo != null;
     }
 
-    private NodoTrie obtener(String palabra) {
-        NodoTrie actual = this.raiz;
+    private NodoTrie<T> obtener(String palabra) {
+        NodoTrie<T> actual = this.raiz;
         for (int i = 0; i < palabra.length(); i++) {
             char c = palabra.charAt(i);
-            if (actual.hijos[c - 'a'] == null) {return null;}
-            actual = actual.hijos[c - 'a'];
+            if (actual.hijos.get(c - 'a') == null) {return null;}
+            actual = actual.hijos.get(c - 'a');
         }
         return actual;
     }
-
 }
