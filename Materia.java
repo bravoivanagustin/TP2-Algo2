@@ -4,33 +4,27 @@ import java.util.ArrayList;
 
 public class Materia {
     
-    private int alumnos;
-    private int[] docentes;
+    public ArrayList<ArrayList<String>> padres;
+    public int alumnos;
+    public int[] docentes;
 
     public Materia() {
         this.alumnos = 0;
         this.docentes = new int[] {0,0,0,0};
     }
 
-    enum CargoDocente{
-        AY2,
-        AY1,
-        JTP,
-        PROF
-    }
-
-    private void agregar_docente(CargoDocente docente) {
-        CargoDocente[] c = new CargoDocente[] {CargoDocente.PROF, CargoDocente.JTP, CargoDocente.AY1, CargoDocente.AY2};
+    public void agregar_docente(aed.SistemaSIU.CargoDocente cargo) {
+        aed.SistemaSIU.CargoDocente[] c = new aed.SistemaSIU.CargoDocente[] {aed.SistemaSIU.CargoDocente.PROF, aed.SistemaSIU.CargoDocente.JTP, aed.SistemaSIU.CargoDocente.AY1, aed.SistemaSIU.CargoDocente.AY2};
         for (int i = 0; i < 4; i++) {
-            if (c[i] == docente) {this.docentes[i] ++;}
+            if (c[i] == cargo) {this.docentes[i] ++;}
         } 
     } // O(1)
 
-    private void agregar_alumno() {
+    public void agregar_alumno() {
         this.alumnos ++;
     } // O(1)
 
-    private int[] cupo_por_docente() { 
+    public int[] cupo_por_docente() { 
         int[] c = new int[] {250, 100, 20, 30};
         int[] cd = new int[4];
         for (int i = 0; i < 4; i++) {
@@ -39,7 +33,7 @@ public class Materia {
         return cd;
     } // O(1)
 
-    private int cupo() {
+    public int cupo() {
         int[] cd = this.cupo_por_docente();
         int min = cd[0];
         for (int i = 0; i < 4; i++) {
@@ -48,7 +42,7 @@ public class Materia {
         return min;
     } // O(1)
 
-    private boolean excede_cupo() {
+    public boolean excede_cupo() {
         int cupo = this.cupo();
         return this.alumnos > cupo;
     } // O(1)
