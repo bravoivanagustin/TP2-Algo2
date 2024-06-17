@@ -16,6 +16,10 @@ public class Trie<T> {
             this.cant_hijos = 0;
             this.valor = null;
         }
+
+        public R valor() {
+            return this.valor;
+        }
     }
 
     public NodoTrie<T> raiz;

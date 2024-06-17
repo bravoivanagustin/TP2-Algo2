@@ -34,31 +34,31 @@ public class SistemaSIU {
                 }
 
                 else {
-                    this.carreras.obtener(infoMaterias[j].getParesCarreraMateria()[n].getCarrera()).valor.insertar(infoMaterias[j].getParesCarreraMateria()[n].getNombreMateria(), materia);
+                    this.carreras.obtener(infoMaterias[j].getParesCarreraMateria()[n].getCarrera()).valor().insertar(infoMaterias[j].getParesCarreraMateria()[n].getNombreMateria(), materia);
                 }
             }
         }
     }
 
     public void inscribir(String estudiante, String carrera, String materia){
-        this.carreras.obtener(carrera).valor.obtener(materia).valor.alumnos ++;
+        this.carreras.obtener(carrera).valor().obtener(materia).valor().lista_alumnos().agregar_alumno(estudiante);
         this.alumnos.obtener(estudiante).valor ++;
     }
 
     public int inscriptos(String materia, String carrera){
-        return this.carreras.obtener(carrera).valor.obtener(materia).valor.alumnos;	    
+        return this.carreras.obtener(carrera).valor().obtener(materia).valor().lista_alumnos().longitud();
     }
 
     public void agregarDocente(CargoDocente cargo, String carrera, String materia){
-        this.carreras.obtener(carrera).valor.obtener(materia).valor.agregar_docente(cargo);
+        this.carreras.obtener(carrera).valor().obtener(materia).valor().agregar_docente(cargo);
     }
 
     public int[] plantelDocente(String materia, String carrera){
-        return this.carreras.obtener(carrera).valor.obtener(materia).valor.docentes;	    
+        return this.carreras.obtener(carrera).valor().obtener(materia).valor().plantel_docente();	    
     }
 
     public boolean excedeCupo(String materia, String carrera){
-        return this.carreras.obtener(carrera).valor.obtener(materia).valor.excede_cupo();	    
+        return this.carreras.obtener(carrera).valor().obtener(materia).valor().excede_cupo();	    
     }
 
     public String[] carreras(){
@@ -66,14 +66,20 @@ public class SistemaSIU {
     }
 
     public String[] materias(String carrera){
-        return this.carreras.obtener(carrera).valor.inOrder();	    
+        return this.carreras.obtener(carrera).valor().inOrder();	    
     }
 
     public int materiasInscriptas(String estudiante){
-        return this.alumnos.obtener(estudiante).valor;	    
+        return this.alumnos.obtener(estudiante).valor();	    
     }
 
     public void cerrarMateria(String materia, String carrera){
-        throw new UnsupportedOperationException("Método no implementado aún");	    
+
+        Materia materia_eliminar = this.carreras.obtener(carrera).valor().obtener(materia).valor();
+        for (int i = 0; i < materia_eliminar.lista_alumnos().longitud(); i ++) {
+            this.alumnos.obtener(materia_eliminar.lista_alumnos().libretas().get(i)).valor --;
+        }
+
+        
     }
 }

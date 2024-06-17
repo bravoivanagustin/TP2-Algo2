@@ -1,12 +1,16 @@
 package aed;
 
+import java.util.ArrayList;
+
 public class Materia {
     
-    public int alumnos;
+    public ArrayList<Trie<Materia>> padres;
+    public ArrayList<String> nombres_padres;
+    public Alumnos alumnos;
     public int[] docentes;
 
     public Materia() {
-        this.alumnos = 0;
+        this.alumnos = new Alumnos();
         this.docentes = new int[] {0,0,0,0};
     }
 
@@ -17,9 +21,17 @@ public class Materia {
         } 
     } // O(1)
 
-    public void agregar_alumno() {
-        this.alumnos ++;
+    public void agregar_alumno(String libretaUniversitaria) {
+        this.alumnos.agregar_alumno(libretaUniversitaria);
     } // O(1)
+
+    public Alumnos lista_alumnos() {
+        return this.alumnos;
+    }
+
+    public int[] plantel_docente() {
+        return this.docentes;
+    }
 
     public int[] cupo_por_docente() { 
         int[] c = new int[] {250, 100, 20, 30};
@@ -41,6 +53,6 @@ public class Materia {
 
     public boolean excede_cupo() {
         int cupo = this.cupo();
-        return this.alumnos > cupo;
+        return this.alumnos.longitud() > cupo;
     } // O(1)
 } 
