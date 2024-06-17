@@ -1,10 +1,7 @@
 package aed;
 
-import java.util.ArrayList;
-
 public class Materia {
     
-    public ArrayList<ArrayList<String>> padres;
     public int alumnos;
     public int[] docentes;
 
