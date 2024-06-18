@@ -2,10 +2,11 @@ package aed;
 
 import java.util.ArrayList;
 
-public class Trie<T> {
+public class Trie<T> { //InvRep (informal): raiz es un NodoTrie<T> o el trie es vacío (o nunca puede ser vacio?). raiz.valor = null. (Después todo lo demás debería estar en el InvRep de la clase NodoTrie<T>)
 
-    public class NodoTrie<R> {
-
+    public class NodoTrie<R> { //InvRep (informal): Cada nodo debe o tener cant_hijos > 0 o ser significado. Si un nodo tiene un hijo en la pos 1, el valor de ese nodo hijo debe ser el caracter ASCII correspondiente a la pos 1. |hijos| = 255.  0 <= cant_hijos <= 256. 
+                               //                   cant_hijos = posiciones no nulas del array hijos. Todos los elementos del array hijos deben ser o null o un NodoTrie<T>. "valor" puede ser o null o R.
+        
         public ArrayList<NodoTrie<R>> hijos;
         public int cant_hijos;
         public R valor;
