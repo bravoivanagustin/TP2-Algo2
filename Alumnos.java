@@ -2,7 +2,7 @@ package aed;
 
 import java.util.ArrayList;
 
-public class Alumnos {
+public class Alumnos { //InvRep (informal): longitud = |libretas|. 
     
     public ArrayList<String> libretas;
     public int longitud;
