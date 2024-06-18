@@ -2,7 +2,7 @@ package aed;
 
 import java.util.ArrayList;
 
-public class Materia {
+public class Materia { //InvRep (informal): |padres| = |nombres_padres|. |docentes| = 4. (forall i in docentes)(i >= 0). ¿Hay que hablar del cupo acá?
     
     public ArrayList<Trie<Materia>> padres;
     public ArrayList<String> nombres_padres;
