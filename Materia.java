@@ -10,6 +10,8 @@ public class Materia {
     public int[] docentes;
 
     public Materia() {
+        this.padres = new ArrayList<>();
+        this.nombres_padres = new ArrayList<>();
         this.alumnos = new Alumnos();
         this.docentes = new int[] {0,0,0,0};
     }

@@ -30,10 +30,14 @@ public class SistemaSIU {
                 if (!this.carreras.buscar(infoMaterias[j].getParesCarreraMateria()[n].getCarrera())) {
                     Trie<Materia> materias = new Trie<>();
                     materias.insertar(infoMaterias[j].getParesCarreraMateria()[n].getNombreMateria(), materia);
+                    materia.padres.add(materias);
+                    materia.nombres_padres.add(infoMaterias[j].getParesCarreraMateria()[n].getNombreMateria());
                     this.carreras.insertar(infoMaterias[j].getParesCarreraMateria()[n].getCarrera(), materias);
                 }
 
                 else {
+                    materia.padres.add(this.carreras.obtener(infoMaterias[j].getParesCarreraMateria()[n].getCarrera()).valor());
+                    materia.nombres_padres.add(infoMaterias[j].getParesCarreraMateria()[n].getNombreMateria());
                     this.carreras.obtener(infoMaterias[j].getParesCarreraMateria()[n].getCarrera()).valor().insertar(infoMaterias[j].getParesCarreraMateria()[n].getNombreMateria(), materia);
                 }
             }
@@ -75,11 +79,14 @@ public class SistemaSIU {
 
     public void cerrarMateria(String materia, String carrera){
 
-        Materia materia_eliminar = this.carreras.obtener(carrera).valor().obtener(materia).valor();
-        for (int i = 0; i < materia_eliminar.lista_alumnos().longitud(); i ++) {
+        Materia materia_eliminar = this.carreras.obtener(carrera).valor().obtener(materia).valor(); // O(|c|+|m|)
+
+        for (int i = 0; i < materia_eliminar.lista_alumnos().longitud(); i ++) { // O(Em)
             this.alumnos.obtener(materia_eliminar.lista_alumnos().libretas().get(i)).valor --;
         }
 
-        
+        for (int j = 0; j < materia_eliminar.padres.size(); j ++){ // O(sum|n|)
+            materia_eliminar.padres.get(j).borrar(materia_eliminar.nombres_padres.get(j));
+        }
     }
 }
