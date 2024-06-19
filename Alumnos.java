@@ -3,6 +3,13 @@ package aed;
 import java.util.ArrayList;
 
 public class Alumnos { //InvRep (informal): longitud = |libretas|. 
+
+    /*InvRep de Alumnos:
+    siendo AlumnosImp la implementación de Alumnos (¿Hay que poner modulo AlumnosImp implementa...?)
+
+    pred InvRep(a: AlumnosImp){
+        {a.longitud = |a.libretas|}
+    */
     
     public ArrayList<String> libretas;
     public int longitud;
