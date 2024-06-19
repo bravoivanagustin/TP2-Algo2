@@ -2,7 +2,17 @@ package aed;
 
 import java.util.ArrayList;
 
-public class Materia { //InvRep (informal): |padres| = |nombres_padres|. |docentes| = 4. (forall i in docentes)(i >= 0). ¿Hay que hablar del cupo acá?
+public class Materia { //InvRep (informal): |padres| = |nombres_padres|. |docentes| = 4.
+
+    /*InvRep de Materia:
+    siendo MateriaImp la implementación de Trie (¿Hay que poner modulo MateriaImp implementa...?)
+
+    pred InvRep(m: MateriaImp){
+        {
+            |m.padres| = |m.nombres_padres| && |m.docentes| = 4 &&
+            //Seguro que tmbn hay que hablar de los tries de la lista "padres", pero no se bien que hay que decir pq no estoy tan familiarizado con el codigo.
+        }
+    */
     
     public ArrayList<Trie<Materia>> padres;
     public ArrayList<String> nombres_padres;
