@@ -6,6 +6,7 @@ public class SistemaSIU {
 
         1) Cada nodo del trie alumnos tiene que tener valor >= 0.
         2) El valor del ultimo nodo de un estudiante es igual a la cantidad de veces que ese estudiante aparece en los Trie<Materia> del Trie carreras.
+        3) Dos materias son iguales si tienen el mismo valor en carreras.
     */
 
     private Trie<Integer> alumnos;
