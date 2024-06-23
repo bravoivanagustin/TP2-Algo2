@@ -2,6 +2,12 @@ package aed;
 
 public class SistemaSIU { //InvRep (informal): (Este no se bien que plantear) cada nodo del trie alumnos tiene que tener como valor a un entero >= 0. 
 
+    /*InvRep de SistemaSIU:
+
+        1) Cada nodo del trie alumnos tiene que tener valor >= 0.
+        2) 
+    */
+
     private Trie<Integer> alumnos;
     private Trie<Trie<Materia>> carreras;
 
