@@ -5,10 +5,9 @@ import java.util.ArrayList;
 public class Alumnos { //InvRep (informal): longitud = |libretas|. 
 
     /*InvRep de Alumnos:
-    siendo AlumnosImp la implementación de Alumnos (¿Hay que poner modulo AlumnosImp implementa...?)
 
-    pred InvRep(a: AlumnosImp){
-        {a.longitud = |a.libretas|}
+        1) longitud = |libretas|
+
     */
     
     public ArrayList<String> libretas;
