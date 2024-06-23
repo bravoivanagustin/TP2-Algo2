@@ -17,6 +17,7 @@ public class Trie<T> {
     2) cant_hijos = posiciones no nulas del array hijos.
     3) |n.hijos| = 256.
     4) Si un nodo tiene un hijo en la pos 1, el valor de ese nodo hijo debe ser el caracter ASCII correspondiente.
+    5) valor es siempre null menos cuando ese nodo es el fin de una palabra.
     
     */
         
