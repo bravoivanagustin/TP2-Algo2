@@ -9,6 +9,7 @@ public class Materia {
     1) Todos los elementos de docentes debe ser >= 0.
     2) |docentes| = 4.
     3) |padres| = |nombres_padres|
+    4) alumnos != null
     
     */
     
