@@ -6,9 +6,9 @@ public class Materia {
 
     /*InvRep de Materia:
 
-    - Todos los elementos de docentes debe ser >= 0.
-    - |docentes| = 4.
-    - |padres| = |nombres_padres|
+    1) Todos los elementos de docentes debe ser >= 0.
+    2) |docentes| = 4.
+    3) |padres| = |nombres_padres|
     
     */
     
