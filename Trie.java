@@ -6,17 +6,17 @@ public class Trie<T> {
 
     /*InvRep de Trie:
 
-        //t.raiz.valor = null
-        //t.raiz != null o el trie es vacio
+        1) t.raiz.valor = null
+        2) t.raiz != null o el trie es vacio
     */
     
     public class NodoTrie<R> {
     /*InvRep de NodoTrie:
 
-    //cant_hijos debe estar entre 0 y 256 y debe ser igual a la cantidad de elementos no nulos en n.hijos.
-    //cant_hijos = posiciones no nulas del array hijos.
-    //|n.hijos| = 256.
-    //Si un nodo tiene un hijo en la pos 1, el valor de ese nodo hijo debe ser el caracter ASCII correspondiente.
+    1) cant_hijos debe estar entre 0 y 256 y debe ser igual a la cantidad de elementos no nulos en n.hijos.
+    2) cant_hijos = posiciones no nulas del array hijos.
+    3) |n.hijos| = 256.
+    4) Si un nodo tiene un hijo en la pos 1, el valor de ese nodo hijo debe ser el caracter ASCII correspondiente.
     
     */
         
